@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"makarov.pw/prntscr/randomizer"
+	"makarov.pw/prntscr/download"
+)
 
 func main() {
-	fmt.Println("Hello, world.")
+	path := randomizer.String(6)
+	fmt.Println(path)
+	//download.File("https://prnt.sc/"+path, path)
+	if err := download.File("https://prnt.sc/"+path, path); err != nil {
+		        panic(err)
+	}
 }

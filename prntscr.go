@@ -10,7 +10,7 @@ func main() {
 	path := randomizer.String(6)
 	fmt.Println(path)
 	//download.File("https://prnt.sc/"+path, path)
-	if err := download.File("https://prnt.sc/"+path, path); err != nil {
+	if err := download.File("https://prnt.sc/"+path, path+".html"); err != nil {
 		        panic(err)
 	}
 }

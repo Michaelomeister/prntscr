@@ -11,15 +11,11 @@ import (
 func main() {
 
 	for i := 0; i < 1000; i++ {
+		//randoming the page
 		path := randomizer.String(6)
-		//fmt.Println(path)
-		//s := "https://prnt.sc/"
-		//download.File(s+path, path+".html")
-		/*if err := download.File("https://prnt.sc/"+path, path+".html"); err != nil {
-			panic(err)
-		}*/
+		//rough search for picture in HTML code
 		imgURL, ext := parser.Search(download.Code("https://prnt.sc/" + path))
-		//fmt.Println(imgURL, ext)
+		//crazy if construct, don't even try
 		if (imgURL[0] == 47) || (ext == "here") {
 			fmt.Println("nihuya")
 		} else if ext == "peg" {
@@ -29,5 +25,7 @@ func main() {
 			download.File(imgURL, path+"."+ext)
 			fmt.Println(path + "." + ext)
 		}
+
 	}
+
 }

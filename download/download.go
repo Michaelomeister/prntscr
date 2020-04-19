@@ -7,8 +7,8 @@ import (
 	"os"
 )
 
-// DownloadFile will download a url to a local file. It's efficient because it will
-// write as it downloads and not load the whole file into memory.
+// File will download a url to a local file.
+// Should efficiently write as it downloads and not load the whole file into memory.
 func File(url string, filepath string) error {
 
 	client := &http.Client{}
@@ -38,6 +38,7 @@ func File(url string, filepath string) error {
 	return err
 }
 
+//Code just grabs html body to string for further actions
 func Code(url string) string {
 
 	client := &http.Client{}

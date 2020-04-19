@@ -4,6 +4,7 @@ import (
 	"regexp"
 )
 
+//Search for pattern before the img link and after, grabbing indexes, doing some math
 func Search(input string) (string, string) {
 	queryBegin, _ := regexp.Compile("<meta name=\"twitter:image:src\" content=")
 	foundBegin := queryBegin.FindStringIndex(input)

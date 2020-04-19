@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
-	"makarov.pw/prntscr/randomizer"
+
 	"makarov.pw/prntscr/download"
+	"makarov.pw/prntscr/parser"
+	"makarov.pw/prntscr/randomizer"
 )
 
 func main() {
@@ -11,8 +13,8 @@ func main() {
 	fmt.Println(path)
 	//download.File("https://prnt.sc/"+path, path)
 	if err := download.File("https://prnt.sc/"+path, path+".html"); err != nil {
-		        panic(err)
+		panic(err)
 	}
-
-	fmt.Println(download.Code("https://prnt.sc/"+path))
+	imgURL, ext := parser.Search(download.Code("https://prnt.sc/" + path))
+	fmt.Println(imgURL, ext)
 }

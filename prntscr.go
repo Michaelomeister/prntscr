@@ -13,4 +13,6 @@ func main() {
 	if err := download.File("https://prnt.sc/"+path, path+".html"); err != nil {
 		        panic(err)
 	}
+
+	fmt.Println(download.Code("https://prnt.sc/"+path))
 }

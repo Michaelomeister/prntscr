@@ -3,6 +3,7 @@ package download
 import (
     "io"
     "net/http"
+    "bytes"
     "os"
 )
 
@@ -39,4 +40,25 @@ func File(url string, filepath string) error {
     // Write the body to file
     _, err = io.Copy(out, resp.Body)
     return err
+}
+
+func Code(url string) string {
+
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		panic(err)
+	}
+
+	req.Header.Set("User-Agent", "Mozilla 5.0")
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+	buf := new(bytes.Buffer)
+        buf.ReadFrom(resp.Body)
+	newStr := buf.String()
+	//body, err := ioutil.ReadAll(resp.Body)
+	return newStr
 }
